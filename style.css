@@ -1,0 +1,284 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #fafafa;
+  background: #111;
+}
+
+/* ================================
+            HERO SECTION
+=================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url('images/tattoo10.jpg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #e63946;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  color: #e63946; /* pink/red tone */
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #e63946;
+}
+
+/* Hero Content */
+.hero-content {
+  text-align: center;
+  margin: auto;
+  max-width: 700px;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #e63946;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  background: #e63946;
+  color: white;
+  padding: 14px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: white;
+  color: #e63946;
+}
+
+/* ===============================
+           About Teaser
+==================================*/
+.about {
+  padding: 4rem 2rem;
+  background: #111;
+  text-align: left
+}
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #e63946;
+  text-align: center;
+}
+.about p {
+  width: 100%;
+  margin: 0 auto 1.5rem;
+  color: #fafafa;
+  text-align: left;
+}
+.btn-link {
+  color: #e63946;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+.btn-link:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* ===================================
+          PORTFOLIO SECTION
+======================================*/
+.portfolio {
+  padding: 4rem 2rem;
+  background: #1a1a1a;
+  text-align: center; /* section aligned center */
+}
+
+.portfolio h2 {
+  color: #e63946;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Gallery grid: 6 images per row on desktop */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;  /* forces all images to be square */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+/* Responsive adjustments */
+
+/* Large screens (desktop) */
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 400px) {
+  .gallery {
+    grid-template-columns: 1fr; /* 1 image per row */
+  }
+}
+
+
+
+/* ====================================
+            Footer
+=======================================*/
+footer {
+  padding: 1rem;
+  text-align: center;
+  background: #000;
+  font-size: 0.9rem;
+}
+footer a {
+  color: #e63946;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   BOOKING SECTION (Refined)
+=========================== */
+.booking {
+  background: #1a1a1a;
+  padding: 2.5rem 1rem; /* reduced height */
+  color: #fafafa;
+  text-align: center;
+}
+
+.booking h1 {
+  color: #e63946;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Booking form layout */
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%; /* stretches nicely */
+  max-width: 650px; /* wider, but not full screen */
+  margin: 0 auto;
+  background: #111;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Input and textarea styling */
+.booking input,
+.booking textarea {
+  background: #181818;
+  color: #fafafa;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.booking input:focus,
+.booking textarea:focus {
+  border-color: #e63946;
+  outline: none;
+  background: #222;
+}
+
+/* Submit button */
+.booking button {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.booking button:hover {
+  background: #b51f2e;
+  transform: translateY(-2px);
+}
+
+
+
