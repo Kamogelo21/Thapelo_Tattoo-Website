@@ -1,3 +1,4 @@
+require('dotenv').config();
 import express from 'express';
 import sqlite3 from 'sqlite3';
 import nodemailer from 'nodemailer';
@@ -48,7 +49,7 @@ app.post('/book', async (req, res) => {
           service: "gmail",
           auth: {
             user: "thapspaint8@gmail.com",
-            pass: "orhy ctps xefn tpqm" // App password from Gmail
+            pass: process.env.EMAIL_PASS // App password from Gmail
           }
         });
 
