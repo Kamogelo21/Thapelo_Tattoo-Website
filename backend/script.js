@@ -1,25 +1,38 @@
+const BACKEND_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://thapelo-tattoo-website.onrender.com";
+
 const form = document.getElementById('bookingForm');
 const dateInput = document.getElementById('date');
 const message = document.getElementById('formMessage');
 
 dateInput.addEventListener('change', async () => {
   const date = dateInput.value;
-  const res = await fetch(`http://localhost:3000/availability?date=${date}`);
+
+  const res = await fetch(
+    `${BACKEND_URL}/availability?date=${date}`
+  );
+
   const data = await res.json();
+
   message.textContent = data.available
     ? 'Date is available ✅'
     : 'Sorry, this date is already booked ❌';
 });
 
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const booking = {
     name: form.name.value,
     email: form.email.value,
     date: form.date.value,
     details: form.details.value
   };
-  const res = await fetch('http://localhost:3000/book', {
+
+  const res = await fetch(`${BACKEND_URL}/book`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(booking)
