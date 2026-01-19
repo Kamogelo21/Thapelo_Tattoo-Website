@@ -1,12 +1,14 @@
 require('dotenv').config();
-import express from 'express';
-import sqlite3 from 'sqlite3';
-import nodemailer from 'nodemailer';
-import cors from 'cors';
+
+const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
+const nodemailer = require('nodemailer');
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 
 // SQLite setup
 const db = new sqlite3.Database('bookings.db');
