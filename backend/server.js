@@ -48,23 +48,31 @@ app.post('/book', async (req, res) => {
           service: "gmail",
           auth: {
             user: "thapspaint8@gmail.com",
-            pass: "your-app-password-here" // App password from Gmail
+            pass: "orhy ctps xefn tpqm" // App password from Gmail
           }
         });
 
         // 2️⃣ SEND EMAIL TO THE ARTIST
-        await transporter.sendMail({
-          from: `"Booking Bot" <thapspaint8@gmail.com>`,
-          to: "thapspaint8@gmail.com",
-          subject: `🎨 New Tattoo Booking from ${name}`,
-          text: `
-          New booking received:
-          Name: ${name}
-          Email: ${email}
-          Date: ${date}
-          Details: ${details}
-                      `
-        });
+        try {
+          await transporter.sendMail({
+            from: `"Booking Bot" <thapspaint8@gmail.com>`,
+            to: "thapspaint8@gmail.com",
+            subject: `New Tattoo Booking from ${name}`,
+            text: `
+        New booking received:
+
+        Name: ${name}
+        Email: ${email}
+        Date: ${date}
+        Details: ${details}
+            `
+          });
+
+          console.log("✅ Email sent successfully");
+
+        } catch (error) {
+          console.error("❌ Email failed:", error);
+        }
 
         // 3️⃣ RESPOND TO CLIENT
         res.json({ message: 'Booking confirmed and email sent to artist!' });
