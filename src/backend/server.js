@@ -1,14 +1,17 @@
 require('dotenv').config();
 
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve frontend files
+app.use(express.static(path.join(__dirname, '../front-end')));
 
 // SQLite setup
 const db = new sqlite3.Database('bookings.db');
@@ -91,6 +94,10 @@ app.post('/book', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000; // Use Render’s port, fallback to 3000 for local dev
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../front-end/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
