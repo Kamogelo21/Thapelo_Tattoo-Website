@@ -61,8 +61,8 @@ app.post('/book', async (req, res) => {
         // 2️⃣ SEND EMAIL TO THE ARTIST
         try {
           await transporter.sendMail({
-            from: `"Booking Bot" <thapspaint8@gmail.com>`,
-            to: "thapspaint8@gmail.com",
+            from: `"${name} via Booking Bot" <thapspaint8@gmail.com>`,
+            to: "thapspaint8@gmail.com"
             subject: `New Tattoo Booking from ${name}`,
             text: `
         New booking received:
