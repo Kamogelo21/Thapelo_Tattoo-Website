@@ -53,7 +53,7 @@ app.post('/book', async (req, res) => {
         const transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
-            user: "thapspaint8@gmail.com",
+            user: "karabomeno18@gmail.com",
             pass: process.env.EMAIL_PASS // App password from Gmail
           }
         });
@@ -61,8 +61,8 @@ app.post('/book', async (req, res) => {
         // 2️⃣ SEND EMAIL TO THE ARTIST
         try {
           await transporter.sendMail({
-            from: `"${name} via Booking Bot" <thapspaint8@gmail.com>`,
-            to: "thapspaint8@gmail.com"
+            from: `"${name} via Booking Bot" <karabomeno18@gmail.com>`,
+            to: "thapspaint8@gmail.com",
             subject: `New Tattoo Booking from ${name}`,
             text: `
         New booking received:
