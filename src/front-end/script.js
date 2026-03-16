@@ -1,7 +1,7 @@
 const BACKEND_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:3000"
-    : "https://thaps-ink.onrender.com";
+    : "https://thapsink.onrender.com";
 
 const form = document.getElementById('bookingForm');
 const dateInput = document.getElementById('date');
