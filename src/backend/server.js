@@ -5,13 +5,23 @@ const sqlite3 = require('sqlite3');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require('path');
-
 const app = express();
+
+const allowedOrigins = [
+  'https://thapsink.onrender.com',
+  'https://thapelo-tattoo-website.onrender.com'
+];
+
 app.use(cors({
-  origin: [
-    "https://thapelo-tattoo-website.onrender.com",
-    "http://localhost:3000"
-  ]
+  origin: function(origin, callback){
+    // allow requests with no origin like mobile apps or curl
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
 }));
 app.use(express.json());
 
