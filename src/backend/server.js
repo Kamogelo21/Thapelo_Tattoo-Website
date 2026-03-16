@@ -8,7 +8,10 @@ const path = require('path');
 
 const app = express();
 app.use(cors({
-  origin: "https://thapsink.onrender.com"
+  origin: [
+    "https://thapelo-tattoo-website.onrender.com",
+    "http://localhost:3000"
+  ]
 }));
 app.use(express.json());
 
