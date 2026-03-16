@@ -7,7 +7,9 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://thapsink.onrender.com"
+}));
 app.use(express.json());
 
 // Serve frontend files
