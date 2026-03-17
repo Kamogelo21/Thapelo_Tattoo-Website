@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../front-end')));
 
 // SQLite setup
-const db = new sqlite3.Database('bookings.db');
+const db = new sqlite3.Database(path.join(__dirname, 'bookings.db'));
 db.run(`CREATE TABLE IF NOT EXISTS bookings(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
