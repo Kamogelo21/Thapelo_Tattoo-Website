@@ -45,9 +45,11 @@ app.post('/book', async (req, res) => {
     [name, email, date, details],
     async (err) => {
       if (err) {
-        console.error(err);
+        console.error("❌ DB INSERT ERROR:", err);
         return res.status(400).json({ message: 'Date already booked' });
       }
+
+      console.log("✅ Booking saved to DB");
 
       try {
         // 1️⃣ CREATE TRANSPORTER
