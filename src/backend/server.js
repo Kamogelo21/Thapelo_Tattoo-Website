@@ -20,7 +20,7 @@ db.run(`CREATE TABLE IF NOT EXISTS bookings(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
   email TEXT,
-  date TEXT UNIQUE,
+  date TEXT,
   details TEXT
 )`);
 
