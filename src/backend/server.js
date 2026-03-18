@@ -15,7 +15,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../front-end')));
 
 // SQLite setup
-const db = new sqlite3.Database(path.join(__dirname, 'bookings.db'));
+const dbPath = path.join(__dirname, 'bookings.db');
+const db = new sqlite3.Database(dbPath);
 db.run(`CREATE TABLE IF NOT EXISTS bookings(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
@@ -37,8 +38,9 @@ app.get('/availability', (req, res) => {
 });
 
 // Make a booking
-app.post('/book', async (req, res) => {
-  const { name, email, date, details } = req.body;
+app.post('/book', (req, res) => {
+  console.log('Booking request received', req.body);
+  const { name, email, date, details } = req.body;  // ✅ Extract variables here
 
   db.run(
     'INSERT INTO bookings(name,email,date,details) VALUES(?,?,?,?)',
@@ -57,7 +59,7 @@ app.post('/book', async (req, res) => {
           service: "gmail",
           auth: {
             user: "karabomeno18@gmail.com",
-            pass: process.env.EMAIL_PASS // App password from Gmail
+            pass: process.env.EMAIL_PASS
           }
         });
 
@@ -68,12 +70,12 @@ app.post('/book', async (req, res) => {
             to: "thapspaint8@gmail.com",
             subject: `New Tattoo Booking from ${name}`,
             text: `
-        New booking received:
+New booking received:
 
-        Name: ${name}
-        Email: ${email}
-        Date: ${date}
-        Details: ${details}
+Name: ${name}
+Email: ${email}
+Date: ${date}
+Details: ${details}
             `
           });
 
@@ -88,8 +90,7 @@ app.post('/book', async (req, res) => {
       } catch (emailError) {
         console.error('Email failed:', emailError);
         res.json({
-          message:
-            'Booking confirmed, but email failed to send. Check server logs.'
+          message: 'Booking confirmed, but email failed to send. Check server logs.'
         });
       }
     }
